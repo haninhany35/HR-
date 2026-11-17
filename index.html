@@ -79,7 +79,7 @@
       input.value='';addBubble(question,'me');const answer=addBubble('Thinking…','bot');
       $('#chat-send').disabled=true;
       try {
-        const response=await fetch(CONFIG.n8nBase+CONFIG.chat,{method:'POST',headers,body:JSON.stringify({action:'sendMessage',sessionId,chatInput:question})});
+        const response=await fetch(CONFIG.n8nBase+CONFIG.chat,{method:'POST',headers,body:JSON.stringify({action:'sendMessage',sessionId,chatConfigured:question})});
         if(!response.ok)throw new Error('HTTP '+response.status);
         const data=await response.json();
         answer.textContent=typeof data.output==='string'?data.output:'The workflow returned an unexpected response format.';
